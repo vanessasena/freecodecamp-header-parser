@@ -6,10 +6,10 @@ var app = express();
 
 app.get('/', (req, res) => {
   var result = {};
-  result.ipaddress = req.ip;
+  result.ipaddress = req.ip.match(/\d+\.\d+\.\d+\.\d+/)[0];
   result.language = req.acceptsLanguages()[0];
   result.software = req.get('user-agent').match(/\((.+?)\)/)[1];
-  console.log(req.get('user-agent'));
+  //console.log(req.ip);
   res.send(result);
 });
 
